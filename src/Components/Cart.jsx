@@ -16,7 +16,7 @@ export default function Cart() {
     const getProduct = async () => {
       try {
         const response = await fetch(
-          "http://localhost/shopserver/api/products.php"
+          "http://localhost:8081/shopserver/api/products.php"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
@@ -55,7 +55,7 @@ export default function Cart() {
           <div className="imgs">
             {cartProduct && (
               <img
-                src={`http://localhost/shopserver/images/${cartProduct.p_img}`}
+                src={`http://localhost:8081/shopserver/images/${cartProduct.p_img}`}
                 height={150}
                 width={180}
                 alt={cartProduct.p_name}

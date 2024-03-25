@@ -12,7 +12,7 @@ export default function AdminPanel(props) {
     const getProduct = async () => {
       try {
         const response = await fetch(
-          "http://localhost/shopserver/api/products.php"
+          "http://localhost:8081/shopserver/api/products.php"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
@@ -33,7 +33,7 @@ export default function AdminPanel(props) {
   }, []);
 
   const handleDelete = async (id) => {
-    const response= await axios.delete("http://localhost/shopserver/api/products.php/"+id);
+    const response= await axios.delete("http://localhost:8081/shopserver/api/products.php/"+id);
 
     setMsg(response.data.success);
   }
@@ -56,7 +56,7 @@ export default function AdminPanel(props) {
             {msg && <p className="text-danger">{msg}</p>}
             <div className="imgs">
               <img
-                src={`http://localhost/shopserver/images/${product.p_img}`}
+                src={`http://localhost:8081/shopserver/images/${product.p_img}`}
                 height={150}
                 width={180}
                 alt={product.p_name}

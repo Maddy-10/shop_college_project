@@ -24,7 +24,7 @@ export default function UserRegister() {
       password:encryptPassword
     }
     // console.log(formData);
-    // const res = await axios.post("http://localhost/shopserver/api/register.php",formData);
+    const res = await axios.post("http://localhost:8081/shopserver/api/register.php",formData);
   }
 
   const handleInput = (e) => {

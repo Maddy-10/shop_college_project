@@ -22,7 +22,7 @@ export default function NewProduct() {
     formData.append("p_img", p_img);
     formData.append("p_descrip", p_descrip);
     const response = await axios.post(
-      "http://localhost/shopserver/api/products.php",
+      "http://localhost:8081/shopserver/api/products.php",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },

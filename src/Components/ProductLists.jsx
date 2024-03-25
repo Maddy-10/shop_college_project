@@ -12,7 +12,7 @@ export default function ProductList() {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await fetch("http://localhost/shopserver/api/products.php");
+        const response = await fetch("http://localhost:8081/shopserver/api/products.php");
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -58,7 +58,7 @@ export default function ProductList() {
             <div key={index} className="card m-2 mt-5 " style={{ width: 300 }}  >
               <div className="imgs cursor-pointer" role="button" onClick={() => handleCardClick(product.p_id)}>
                 <img
-                  src={`http://localhost/shopserver/images/${product.p_img}`}
+                  src={`http://localhost:8081/shopserver/images/${product.p_img}`}
                   height={150}
                   width={180}
                   alt={product.p_name}

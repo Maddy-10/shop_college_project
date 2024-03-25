@@ -14,7 +14,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await fetch("http://localhost/shopserver/api/products.php");
+        const response = await fetch("http://localhost:8081/shopserver/api/products.php");
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -52,7 +52,9 @@ const ProductDetails = () => {
   }
   const qtyDec = (e) => {
     e.preventDefault();
-    setQty(qty-1);
+    if(qty>1){
+      setQty(qty-1);
+    }
     setLimit(false)
   }
 
@@ -79,7 +81,7 @@ const ProductDetails = () => {
                   //onChange={(e) => setP_name(e.target.value)}
                 />
                 <div className='d-flex justyfy-content-between w-100'>
-                <label className='mt-4'>Price :</label>
+                <label className='mt-4 text'>Price :</label>
                 <input
                   type="number"
                   name="p_price"
@@ -93,18 +95,18 @@ const ProductDetails = () => {
               </div>
               <div className="col-md-6">
                 <div className='d-flex  '>
-                <button className="btn btn-secondary" onClick={qtyIn}>+</button>
+                <button className="btn btn-secondary m-3" onClick={qtyIn}>+</button>
                 <input
                   type="number"
                   name="p_stock"
-                  className="form-group w-25 rounded mt-4 form-control"
+                  className="form-group w-25 rounded mt-2 form-control"
                   placeholder="Product Quantity"
                   value={qty}
                   disabled
                  // value={p_stock}
                  // onChange={(e) => setP_stock(e.target.value)}
                 />
-                <button className="btn btn-secondary " onClick={qtyDec}>-</button>
+                <button className="btn btn-secondary m-3" onClick={qtyDec}>-</button>
                 {limit&&<p className='text-danger'>Reached Stock Limit...!</p>}
                 </div>
                 <input

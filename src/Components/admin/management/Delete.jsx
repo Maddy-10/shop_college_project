@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ProductList } from "../assets/data/ProductList";
-import Header from "../../Header";
 import axios from "axios";
 
 
@@ -19,7 +17,7 @@ export default function Delete() {
     const getProduct = async () => {
       try {
         const response = await fetch(
-          "http://localhost/shopserver/api/products.php"
+          "http://localhost:8081/shopserver/api/products.php"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
@@ -41,7 +39,7 @@ export default function Delete() {
 
   const handleDelete = async (id) => {
     setLoading(true)
-    const response= await axios.delete("http://localhost/shopserver/api/products.php/"+id);
+    const response= await axios.delete("http://localhost:8081/shopserver/api/products.php/"+id);
 
     setMsg(response.data.success);
     setTimeout(()=>{
@@ -59,7 +57,7 @@ export default function Delete() {
   
   return (
     <>
-    <Header/>
+    
       <div>
         <div
           className="card m-2 mt-5 cursor-pointer"
@@ -69,7 +67,7 @@ export default function Delete() {
           <div className="imgs">
             {deleteProduct && (
               <img
-                src={`http://localhost/shopserver/images/${deleteProduct.p_img}`}
+                src={`http://localhost:8081/shopserver/images/${deleteProduct.p_img}`}
                 height={150}
                 width={180}
                 alt={deleteProduct.p_name}
